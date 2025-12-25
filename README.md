@@ -61,11 +61,14 @@ Email Service (PHPMailer)
 
 Display them here:
 
-![Homepage](screenshots/homepage.png)
-![Booking Page](screenshots/booking.png)
-![Details Page](screenshots/details.png)
+| Home Page | login  |
+|------------|----------------|
+| <img width="1521" height="835" alt="image" src="https://github.com/user-attachments/assets/09750e01-c0cc-4573-a4ba-1a550d8790dc" /> | <img width="819" height="622" alt="image" src="https://github.com/user-attachments/assets/c665b46a-81a6-4d29-a6a8-454095db65fe" />|
 
----
+| user sign up | garage owner signup  |
+|------------|----------------|
+| <img width="790" height="779" alt="image" src="https://github.com/user-attachments/assets/623bbf01-bce9-4576-9a73-46b7392c0ca3" />| <img width="1021" height="850" alt="image" src="https://github.com/user-attachments/assets/f7b05183-86bf-4beb-b22d-53509f7444e2" />|
+
 
 ## 🎥 Demo Video
 
