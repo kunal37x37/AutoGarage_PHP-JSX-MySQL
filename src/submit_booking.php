@@ -113,9 +113,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // YOUR EMAIL LOGIC (SAME)
         // ==========================
         $garage_emails = [
-            1 => 'patelkunal3737@gmail.com',
-            2 => '23amtics088@gmail.com',
-            3 => 'applepatel6969@gmail.com',
+            1 => 'XX@gmail.com',  // replace with your exmail
+            2 => 'XX@gmail.com',  // replace with your exmail
+            3 => 'XX@gmail.com',  // replace with your exmail
         ];
 
         if (isset($garage_emails[$garage_id])) {
@@ -126,12 +126,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';
                 $mail->SMTPAuth   = true;
-                $mail->Username   = 'kunal10to0@gmail.com';
-                $mail->Password   = 'vzek gxne jybu xccw';
+                $mail->Username   = 'XXX'; replace with your email
+                $mail->Password   = 'XXXX XXXX XXXX XXXX'; // replace with your exmail 2 step verification password
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
                 $mail->Port       = 465;
 
-                $mail->setFrom('kunal10to0@gmail.com', 'Garage Booking System');
+                $mail->setFrom('XX@gmail.com', 'Garage Booking System');  // replace with your exmail
                 $mail->addAddress($garage_emails[$garage_id]);
 
                 $mail->isHTML(true);
