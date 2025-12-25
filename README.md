@@ -82,6 +82,62 @@ Email Service (PHPMailer)
 
 ## 🖼 Screenshots
 
-📂 Create a folder named `/screenshots` and add images like:
+
+Display them here:
+
+![Homepage](screenshots/homepage.png)
+![Booking Page](screenshots/booking.png)
+![Details Page](screenshots/details.png)
+
+---
+
+## 🎥 Demo Video
+
+📂 Create a folder named `/demo` and add video file:
 
 
+▶ **[Watch Project Demo Video](demo/autogarage_demo.mp4)**
+
+---
+
+## 📁 Project Folder Structure
+
+```text
+AutoGarage_PHP-JSX-MySQL/
+│
+├── public/
+├── src/
+│   ├── css/
+│   │   └── main.css
+│   │
+│   ├── js/
+│   │   ├── booking.jsx
+│   │   └── details.jsx
+│   │
+│   ├── phpmailer/
+│   ├── vendor/
+│   │
+│   ├── booking.html
+│   ├── details.html
+│   ├── homepage.html
+│   │
+│   ├── index.php
+│   ├── login.php
+│   ├── signup.php
+│   ├── logout.php
+│   ├── submit_booking.php
+│   └── config.php
+│
+├── package.json
+├── composer.json
+├── .gitignore
+├── README.md
+└── LICENSE
+```
+
+## Installation & Setup
+###1.Start XAMPP
+- Start Apache
+- Start MySQL
+###2.Place Project in htdocs
+C:\xampp\htdocs\AutoGarage_PHP-JSX-MySQL
