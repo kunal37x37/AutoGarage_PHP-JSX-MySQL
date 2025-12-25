@@ -45,4 +45,12 @@ This hybrid approach keeps the project **simple, structured, and practical**.
 ---
 
 ## 🧩 System Architecture
-
+---
+HTML / React (JSX)
+↓
+PHP Backend
+↓
+MySQL Database
+↓
+Email via PHPMailer
+---
