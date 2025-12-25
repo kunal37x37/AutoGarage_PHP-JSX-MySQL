@@ -61,13 +61,25 @@ Email Service (PHPMailer)
 
 Display them here:
 
-| Home Page | login  |
+| landing page Page | login  |
 |------------|----------------|
 | <img width="1521" height="835" alt="image" src="https://github.com/user-attachments/assets/09750e01-c0cc-4573-a4ba-1a550d8790dc" /> | <img width="819" height="622" alt="image" src="https://github.com/user-attachments/assets/c665b46a-81a6-4d29-a6a8-454095db65fe" />|
 
 | user sign up | garage owner signup  |
 |------------|----------------|
 | <img width="790" height="779" alt="image" src="https://github.com/user-attachments/assets/623bbf01-bce9-4576-9a73-46b7392c0ca3" />| <img width="1021" height="850" alt="image" src="https://github.com/user-attachments/assets/f7b05183-86bf-4beb-b22d-53509f7444e2" />|
+
+| Home page | Home page |
+|------------|----------------|
+| <img width="1919" height="878" alt="image" src="https://github.com/user-attachments/assets/9eede962-fd16-4baa-9e7e-c456af660dba" />| <img width="1919" height="875" alt="image" src="https://github.com/user-attachments/assets/3cc21532-e382-47aa-8bee-e81907dc33b6" />|
+
+| details page | Booking page |
+|------------|----------------|
+| <img width="1378" height="880" alt="image" src="https://github.com/user-attachments/assets/c118137c-aebb-4820-b77e-54c57741a7a8" />| <img width="720" height="873" alt="image" src="https://github.com/user-attachments/assets/cfd66c49-6b65-4e9d-9aba-97e6fcdc2b00" />|
+
+| configuration Booking | Send Email to Garge Owner page  |
+|------------|----------------|
+| <img width="1051" height="729" alt="image" src="https://github.com/user-attachments/assets/ed593472-9e50-405d-adf3-2792b1e525cc" />| <img width="665" height="335" alt="image" src="https://github.com/user-attachments/assets/e716aa46-d5a4-4f81-8320-015375a1f71d" />|
 
 
 ## 🎥 Demo Video
