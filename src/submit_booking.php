@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';
                 $mail->SMTPAuth   = true;
-                $mail->Username   = 'XXX'; replace with your email
+                $mail->Username   = 'XXX'; //replace with your email
                 $mail->Password   = 'XXXX XXXX XXXX XXXX'; // replace with your exmail 2 step verification password
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
                 $mail->Port       = 465;
