@@ -136,8 +136,8 @@ AutoGarage_PHP-JSX-MySQL/
 ```
 
 ## Installation & Setup
-###1.Start XAMPP
+### 1.Start XAMPP
 - Start Apache
 - Start MySQL
-###2.Place Project in htdocs
+### 2.Place Project in htdocs
 C:\xampp\htdocs\AutoGarage_PHP-JSX-MySQL
