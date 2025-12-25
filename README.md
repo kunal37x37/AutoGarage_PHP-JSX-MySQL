@@ -5,7 +5,7 @@
 ![Tech](https://img.shields.io/badge/Tech-PHP%20%7C%20React%20(JSX)%20%7C%20MySQL-blue)
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
-AutoGarage is a **full-stack web application** developed using **PHP, MySQL, and React (JSX)** that allows users to book vehicle services online and receive confirmation emails.
+AutoGarage is a **full-stack web application** developed using **PHP, MySQL, and React (JSX)** that allows users to book vehicle services online and garage Owner receive confirmation emails.
 
 This project is designed for **college projects, internships, and learning full-stack development** with a **simple setup and automatic database creation**.
 
@@ -17,7 +17,7 @@ AutoGarage uses **different technologies for different responsibilities**:
 
 ### 🔧 Backend (PHP + MySQL)
 Handled using **PHP**:
-- User **Login / Signup / Logout**
+- User **Login / Signup / Logout/booking backend**
 - Booking logic & form handling
 - Database operations (Insert / Fetch)
 - Automatic database & table creation
@@ -55,31 +55,7 @@ MySQL Database
 Email Service (PHPMailer)
 ```
 
-
 ---
-
-## 🛠 Tech Stack
-
-**Frontend**
-- React.js (JSX)
-- HTML5
-- CSS3
-- JavaScript
-
-**Backend**
-- PHP
-- PHPMailer (SMTP)
-
-**Database**
-- MySQL (XAMPP)
-
-**Tools**
-- XAMPP
-- VS Code
-- GitHub
-
----
-
 ## 🖼 Screenshots
 
 
@@ -126,8 +102,12 @@ AutoGarage_PHP-JSX-MySQL/
 │   ├── signup.php
 │   ├── logout.php
 │   ├── submit_booking.php
-│   └── config.php
-│
+│   ├── config.php
+│   ├── index.php
+|   ├── index.css
+|   ├── server.js
+|   └── setuptest.js
+|   
 ├── package.json
 ├── composer.json
 ├── .gitignore
@@ -139,5 +119,44 @@ AutoGarage_PHP-JSX-MySQL/
 ### 1.Start XAMPP
 - Start Apache
 - Start MySQL
-### 2.Place Project in htdocs
+- 
+### 2.Auto Create Database
+
+```text
 C:\xampp\htdocs\AutoGarage_PHP-JSX-MySQL
+```
+
+### 3.Place Project in htdocs
+- Open in browser:
+```text
+http://localhost/AutoGarage_PHP-JSX-MySQL/src/config.php
+```
+- ✔ Database & tables will be created automatically.
+
+### 4.Run Project
+```text
+http://localhost/AutoGarage_PHP-JSX-MySQL/src/index.php
+```
+- 🎉 Project is now live locally.
+
+### 📧 Email Functionality
+- Booking confirmation email sent to user
+- Implemented using PHPMailer
+- Uses Gmail SMTP with App Password
+- Email is triggered after successful booking
+
+## 🚀 Future Enhancements
+- Online payment gateway
+- Admin dashboard
+- Booking status tracking
+- JWT based authentication
+- Deployment on live server
+
+## 📜 License
+- This project is licensed under the MIT License.
+
+## 👨‍💻 Author
+- Patel Kunal Kiranbhai
+- Computer Science & Engineering Student
+- GitHub: https://github.com/kunal37x37
+- Project Link:https://github.com/kunal37x37/AutoGarage_PHP-JSX-MySQL
