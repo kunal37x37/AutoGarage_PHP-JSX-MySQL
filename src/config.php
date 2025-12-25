@@ -6,7 +6,7 @@
 $dbHosts = ['127.0.0.1', 'localhost'];
 $ports   = ['3306', '3307'];
 $username = 'root';
-$password = 'amtics@123';
+$password = '';
 $dbname   = 'vehicle_service';
 
 $pdo = null;
