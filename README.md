@@ -86,15 +86,6 @@ Display them here:
 |------------|----------------|-----------------|
 |<img width="250" height="178" alt="image" src="https://github.com/user-attachments/assets/925bc6b5-381f-44aa-a6c3-549bdbaf85fd" />| <img width="1597" height="306" alt="image" src="https://github.com/user-attachments/assets/53815d01-61cb-49cb-8b86-08c128c733b1" />|<img width="1679" height="393" alt="image" src="https://github.com/user-attachments/assets/1f2f0f7c-4a78-47d4-85f7-cd060f3769bd" />|
 
-## 🎥 Demo Video
-
-📂 Create a folder named `/demo` and add video file:
-
-
-▶ **[Watch Project Demo Video](demo/autogarage_demo.mp4)**
-
----
-
 ## 📁 Project Folder Structure
 
 ```text
