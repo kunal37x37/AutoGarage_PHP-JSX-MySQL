@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCare - Find Garages</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo i {
+            color: #e74c3c;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+        
+        .logout-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .search-container {
+            background-color: #3498db;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .search-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-box h2 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .search-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .city-select {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: white;
+            min-width: 200px;
+        }
+        
+        .search-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .search-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .garages-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .city-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .city-tab {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .city-tab:hover,
+        .city-tab.active {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .garage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .garage-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .garage-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .garage-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .garage-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .garage-info {
+            padding: 1.5rem;
+        }
+        
+        .garage-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .garage-location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #7f8c8d;
+            margin-bottom: 0.5rem;
+        }
+        
+        .garage-services {
+            color: #3498db;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .garage-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+        
+        .garage-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-secondary {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #c0392b;
+        }
+        
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            .search-controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-car"></i>
+            <span>AutoCare</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#">Bookings</a>
+            <a href="#">Payment</a>
+            <a href="#">Profile</a>
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </nav>
+    </header>
+
+    <div class="search-container">
+        <div class="search-box">
+            <h2>Find the Best Garages in Your City</h2>
+            <div class="search-controls">
+                <input type="text" class="search-input" id="serviceInput" placeholder="Search for services...">
+                <select class="city-select" id="citySelect">
+                    <option value="all">All Cities</option>
+                    <option value="mumbai">Mumbai</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="bangalore">Bangalore</option>
+                    <option value="hyderabad">Hyderabad</option>
+                    <option value="chennai">Chennai</option>
+                    <option value="kolkata">Kolkata</option>
+                    <option value="pune">Pune</option>
+                </select>
+                <button class="search-btn" id="searchBtn">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="garages-container">
+        <h2 class="section-title">Popular Garages</h2>
+
+        <div class="city-tabs" id="cityTabs">
+            <div class="city-tab active" data-city="all">All Cities</div>
+            <div class="city-tab" data-city="mumbai">Mumbai</div>
+            <div class="city-tab" data-city="delhi">Delhi</div>
+            <div class="city-tab" data-city="bangalore">Bangalore</div>
+            <div class="city-tab" data-city="hyderabad">Hyderabad</div>
+        </div>
+
+        <div class="garage-grid" id="garageGrid">
+            <!-- Garage cards will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+        <p>&copy; 2023 AutoCare. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Enhanced garage data with more services
+        const garages = [{
+            id: 1,
+            name: "City Auto Works",
+            city: "mumbai",
+            location: "Andheri East",
+            services: ["Engine Repair", "Brakes", "Oil Change", "Battery Replacement"],
+            rating: 4.5,
+            image: "https://images.unsplash.com/photo-1600861195091-690c92f1d2cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+        }, {
+            id: 2,
+            name: "Precision Motors",
+            city: "delhi",
+            location: "Connaught Place",
+            services: ["AC Repair", "Electrical", "Diagnostics", "CNG Installation"],
+            rating: 4.2,
+            image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+        }, {
+            id: 3,
+            name: "Bangalore Car Care",
+            city: "bangalore",
+            location: "Koramangala",
+            services: ["Full Service", "Denting", "Painting", "Car Wash"],
+            rating: 4.7,
+            image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+        }, {
+            id: 4,
+            name: "Hyderabad Auto Experts",
+            city: "hyderabad",
+            location: "Gachibowli",
+            services: ["Transmission", "Suspension", "Wheel Alignment", "Tyre Change"],
+            rating: 4.3,
+            image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+        }, {
+            id: 5,
+            name: "Mumbai Car Service",
+            city: "mumbai",
+            location: "Bandra West",
+            services: ["Battery Service", "Tyre Rotation", "Car Wash", "Interior Cleaning"],
+            rating: 4.0,
+            image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+        }, {
+            id: 6,
+            name: "Delhi Auto Solutions",
+            city: "delhi",
+            location: "Saket",
+            services: ["CNG Installation", "Insurance", "Roadside Assistance", "Car Inspection"],
+            rating: 4.1,
+            image: "https://images.unsplash.com/photo-1504215680853-026ed2a45def?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+        }, {
+            id: 7,
+            name: "Pune Auto Garage",
+            city: "pune",
+            location: "Koregaon Park",
+            services: ["General Repair", "Oil Change", "Brake Service", "AC Service"],
+            rating: 4.4,
+            image: "https://images.unsplash.com/photo-1504215680853-026ed2a45def?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+        }, {
+            id: 8,
+            name: "Chennai Car Experts",
+            city: "chennai",
+            location: "Adyar",
+            services: ["Engine Overhaul", "Transmission Repair", "Electrical Work", "Denting"],
+            rating: 4.6,
+            image: "https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+        }];
+
+        // DOM elements
+        const garageGrid = document.getElementById('garageGrid');
+        const cityTabs = document.getElementById('cityTabs');
+        const citySelect = document.getElementById('citySelect');
+        const searchBtn = document.getElementById('searchBtn');
+        const serviceInput = document.getElementById('serviceInput');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        // Function to filter garages based on city and service keyword
+        // Enhanced filterGarages function with better search logic
+        function filterGarages(city = 'all', serviceKeyword = '') {
+            return garages.filter(garage => {
+                // Filter by city - exact match
+                const cityMatch = city === 'all' || garage.city.toLowerCase() === city.toLowerCase();
+
+                // Filter by service keyword - more flexible matching
+                const serviceMatch = serviceKeyword === '' ||
+                    garage.services.some(service =>
+                        service.toLowerCase().includes(serviceKeyword.toLowerCase())
+                    ) ||
+                    garage.name.toLowerCase().includes(serviceKeyword.toLowerCase()) ||
+                    garage.location.toLowerCase().includes(serviceKeyword.toLowerCase());
+
+                return cityMatch && serviceMatch;
+            });
+        }
+
+        // Enhanced performSearch function with debouncing
+        let searchTimeout;
+
+        function performSearch() {
+            clearTimeout(searchTimeout);
+
+            // Small delay to prevent excessive searching while typing
+            searchTimeout = setTimeout(() => {
+                const selectedCity = document.querySelector('.city-tab.active').dataset.city;
+                const serviceKeyword = serviceInput.value.trim();
+                const filteredGarages = filterGarages(selectedCity, serviceKeyword);
+                renderGarages(filteredGarages);
+            }, 300);
+        }
+
+        // Improved event listeners
+        serviceInput.addEventListener('input', performSearch); // Changed from keyup to input for better compatibility
+
+        // Initialize with all garages and set default city in dropdown
+        window.addEventListener('DOMContentLoaded', () => {
+            renderGarages(filterGarages());
+            citySelect.value = 'all'; // Ensure dropdown matches initial active tab
+        });
+
+        // Function to render garage cards
+        function renderGarages(filteredGarages) {
+            garageGrid.innerHTML = '';
+
+            if (filteredGarages.length === 0) {
+                garageGrid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <p>No garages found matching your search criteria</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filteredGarages.forEach(garage => {
+                const garageCard = document.createElement('div');
+                garageCard.className = 'garage-card';
+                garageCard.innerHTML = `
+                    <div class="garage-image">
+                        <img src="${garage.image}" alt="${garage.name}">
+                    </div>
+                    <div class="garage-info">
+                        <h3 class="garage-name">${garage.name}</h3>
+                        <div class="garage-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${garage.location}, ${garage.city.charAt(0).toUpperCase() + garage.city.slice(1)}</span>
+                        </div>
+                        <div class="garage-services">
+                            <i class="fas fa-tools"></i> ${garage.services.join(', ')}
+                        </div>
+                        <div class="garage-rating">
+                            <i class="fas fa-star"></i>
+                            <span>${garage.rating}</span>
+                        </div>
+                        <div class="garage-actions">
+                            <button class="btn btn-primary" onclick="bookGarage(${garage.id})">
+                                <i class="fas fa-calendar-alt"></i> Book
+                            </button>
+                           <div class="garage-actions">
+    <button class="btn btn-primary" 
+            onclick="window.location.href='details.html?garageId=${garage.id}'">
+        <i class="fas fa-info-circle"></i> Details
+    </button>
+</div>
+                        </div>
+                    </div>
+                `;
+                garageGrid.appendChild(garageCard);
+            });
+        }
+
+        // Function to perform search
+        function performSearch() {
+            const selectedCity = document.querySelector('.city-tab.active').dataset.city;
+            const serviceKeyword = serviceInput.value.trim();
+            const filteredGarages = filterGarages(selectedCity, serviceKeyword);
+            renderGarages(filteredGarages);
+        }
+
+        // Initialize with all garages
+        renderGarages(filterGarages());
+
+        // City tab click event
+        cityTabs.addEventListener('click', (e) => {
+            if (e.target.classList.contains('city-tab')) {
+                // Remove active class from all tabs
+                document.querySelectorAll('.city-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+
+                // Add active class to clicked tab
+                e.target.classList.add('active');
+
+                // Update select dropdown to match
+                citySelect.value = e.target.dataset.city === 'all' ? 'all' : e.target.dataset.city;
+
+                // Perform search with new filters
+                performSearch();
+            }
+        });
+
+        // Search button click event
+        searchBtn.addEventListener('click', performSearch);
+
+        // City select change event
+        citySelect.addEventListener('change', () => {
+            const selectedCity = citySelect.value;
+
+            // Find and click the corresponding city tab
+            const tab = selectedCity === 'all' ?
+                document.querySelector('.city-tab[data-city="all"]') :
+                document.querySelector(`.city-tab[data-city="${selectedCity}"]`);
+
+            if (tab) {
+                document.querySelectorAll('.city-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                performSearch();
+            }
+        });
+
+        // Service input keyup event (search as you type)
+        serviceInput.addEventListener('keyup', performSearch);
+
+        // Logout button click event
+        logoutBtn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            try {
+                const response = await fetch('logout.php');
+                if (response.ok) {
+                    window.location.href = 'index.php';
+                }
+            } catch (error) {
+                console.error('Logout failed:', error);
+            }
+        });
+
+        // Action functions
+        function bookGarage(garageId) {
+            window.location.href = `booking.html?garageId=${garageId}`;
+        }
+
+        function viewDetails(garageId) {
+            window.location.href = `details.html?garageId=${garageId}`;
+        }
+    </script>
+</body>
+
+</html>
