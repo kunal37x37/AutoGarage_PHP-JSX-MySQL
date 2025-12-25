@@ -12,7 +12,7 @@ require 'vendor/autoload.php';
 // ===================================
 $servername = "localhost";
 $username   = "root";
-$password   = "amtics@123";
+$password   = "";
 $dbname     = "vehicle_service";
 
 // ===================================
