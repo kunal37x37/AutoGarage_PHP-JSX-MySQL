@@ -54,3 +54,34 @@ MySQL Database
         ↓
 Email Service (PHPMailer)
 ```
+
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend**
+- React.js (JSX)
+- HTML5
+- CSS3
+- JavaScript
+
+**Backend**
+- PHP
+- PHPMailer (SMTP)
+
+**Database**
+- MySQL (XAMPP)
+
+**Tools**
+- XAMPP
+- VS Code
+- GitHub
+
+---
+
+## 🖼 Screenshots
+
+📂 Create a folder named `/screenshots` and add images like:
+
+
